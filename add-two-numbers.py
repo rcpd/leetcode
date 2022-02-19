@@ -13,60 +13,40 @@ class ListNode(object):
 
 
 class Solution(object):
-    def __init__(self):
-        self.carry = 0
-
-    def addTwoNumbers(self, l1, l2):
+    @staticmethod
+    def addTwoNumbers(l1, l2):
         """
         :type l1: ListNode
         :type l2: ListNode
         :rtype: ListNode
-        """
-        result = []
 
-        # walk both lists
-        while l1 or l2:
+        Solution: treat the nodes like long form addition
+        """
+        root = node = ListNode(0)  # dummy node
+        carry = 0
+
+        # walk both linked lists
+        while l1 or l2 or carry:
+            val1 = val2 = 0
             if l1:
                 val1 = l1.val
-            else:
-                val1 = 0
+                l1 = l1.next
             if l2:
                 val2 = l2.val
-            else:
-                val2 = 0
-
-            # same as long form addition
-            num = val1 + val2
-            if self.carry:
-                num += self.carry
-                self.carry = 0
-
-            if num >= 10:
-                self.carry += 1
-                num -= 10
-
-            node = ListNode(val=num, next=None)
-            if result:
-                result[-1].next = node
-
-            result.append(node)
-
-            # advance list(s)
-            if l1:
-                l1 = l1.next
-
-            if l2:
                 l2 = l2.next
 
-            print(val1, val2, self.carry, "|", num)
+            # same as long form addition
+            carry, val = divmod(val1+val2+carry, 10)
 
-        if self.carry:
-            print(0, 0, 0, "|", 1)
-            node = ListNode(val=self.carry, next=None)
-            self.carry = 0
-            result[-1].next = node
+            # link/advance to next
+            node.next = ListNode(val)
+            node = node.next
 
-        return result[0]
+            # debug
+            print(val1, val2, carry, "|", val)
+
+        # return the first node (not the dummy node)
+        return root.next
 
 
 # test code
@@ -92,13 +72,9 @@ e3_l2_2 = ListNode(val=9, next=e3_l2_3)
 e3_l2_1 = ListNode(val=9, next=e3_l2_2)
 e3_l2_0 = ListNode(val=9, next=e3_l2_1)
 
-# example 1
-s = Solution()
-s.addTwoNumbers(e1_l1_0, e1_l2_0)
+x = Solution.addTwoNumbers(e1_l1_0, e1_l2_0)
 print("Solution: [7,0,8]\n")
-s.addTwoNumbers(e2_l1_0, e2_l2_0)
+y = Solution.addTwoNumbers(e2_l1_0, e2_l2_0)
 print("Solution: [0]\n")
-s.addTwoNumbers(e3_l1_0, e3_l2_0)
+z = Solution.addTwoNumbers(e3_l1_0, e3_l2_0)
 print("Solution: [8,9,9,9,0,0,0,1] \n")
-
-
