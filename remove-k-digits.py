@@ -33,9 +33,10 @@ class Solution(object):
         return "".join(stack).lstrip("0") or "0"
 
 
-# tests
-assert Solution.removeKdigits(num="1432219", k=3) == "1219"
-assert Solution.removeKdigits(num="10200", k=1) == "200"
-assert Solution.removeKdigits(num="10", k=2) == "0"
+# test code
+if __name__ == '__main__':
+    assert Solution.removeKdigits(num="1432219", k=3) == "1219"
+    assert Solution.removeKdigits(num="10200", k=1) == "200"
+    assert Solution.removeKdigits(num="10", k=2) == "0"
 
 
