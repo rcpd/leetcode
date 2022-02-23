@@ -14,56 +14,25 @@ class TreeNode:
 
 class Solution:
     @staticmethod
-    def isSymmetric(root: Optional[TreeNode]) -> bool:
-        if root:
-            if root.left and root.right:
-                # initiate the 2 walks
-                left_vals = []
-                right_vals = []
-                Solution.walk_inorder(root.left, left_vals)
-                Solution.walk_mirror(root.right, right_vals)
-
-                # debug
-                print(left_vals, right_vals)
-
-                # check the results
-                if len(left_vals) == len(right_vals):
-                    for i in range(0, len(left_vals)):
-                        if left_vals[i] != right_vals[i]:
-                            return False
-                else:
-                    return False
-            elif root.left or root.right:
-                return False
-            elif root.left is None and root.right is None:
-                return True
-
-        return True
+    def isSymmetric(root):
+        if root is None:
+            return True
+        else:
+            return Solution.isMirror(root.left, root.right)
 
     @staticmethod
-    def walk_inorder(node, res):
-        # node, left, right
-        if node is not None:
-            res.append(node.val)
-            if node.left:
-                Solution.walk_inorder(node.left, res)
-            if node.right:
-                Solution.walk_inorder(node.right, res)
-        else:
-            res.append(node)
+    def isMirror(left, right):
+        if left is None and right is None:
+            return True
+        if left is None or right is None:
+            return False
 
-
-    @staticmethod
-    def walk_mirror(node, res):
-        # node, right, left
-        if node is not None:
-            res.append(node.val)
-            if node.right:
-                Solution.walk_mirror(node.right, res)
-            if node.left:
-                Solution.walk_mirror(node.left, res)
+        if left.val == right.val:
+            outerPair = Solution.isMirror(left.left, right.right)
+            innerPair = Solution.isMirror(left.right, right.left)
+            return outerPair and innerPair
         else:
-            res.append(node)
+            return False
 
 
 # test code
