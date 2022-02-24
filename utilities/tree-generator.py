@@ -18,6 +18,9 @@ class Tests:
         """
         from collections import deque
 
+        if not value_list:
+            return []
+
         # initialize the fringe
         value = iter(value_list)
         root = TreeNode(next(value))
