@@ -1,5 +1,5 @@
 """
-Depth first search of a graph or tree structure
+Depth First Search (DFS) of a graph or tree structure
 """
 
 
@@ -8,11 +8,12 @@ class Graph:
     def dfs_recursive(visited, graph, vertex):
         """
         O(V+E) time, (V) space
+        replace visited list with set if returned order doesn't matter: O(1) access
         """
         if vertex not in visited:
             visited.append(vertex)
-            for neighbour in graph[vertex]:
-                Graph.dfs_recursive(visited, graph, neighbour)
+            for node in graph[vertex]:
+                Graph.dfs_recursive(visited, graph, node)
 
         return visited
 
@@ -20,6 +21,7 @@ class Graph:
     def dfs_iterative(graph, root):
         """
         O(V+E) time, (V) space
+        replace visited list with set if returned order doesn't matter: O(1) access
         """
         stack, visited = [root], []
 
@@ -28,8 +30,8 @@ class Graph:
             if vertex in visited:
                 continue
             visited.append(vertex)
-            for neighbor in graph[vertex]:
-                stack.append(neighbor)
+            for node in graph[vertex]:
+                stack.append(node)
 
         return visited
 
@@ -150,8 +152,8 @@ class Tree:
     @staticmethod
     def post_order_iterative(root):
         """
-        node, left, right (top down)
-        useful for copying a tree
+        left, right, node (bottom up, left to left)
+        useful for deleting a tree
         """
         stack, res = [], []
         while stack or root:
@@ -165,7 +167,7 @@ class Tree:
         return res[::-1]
 
 
-# driver code -- replace lists with sets if returned order doesn't matter
+# driver code
 
 print("dfs traversal of a directed graph (recursive/iterative)")
 print("  5")
@@ -184,6 +186,8 @@ rec = Graph.dfs_recursive([], graph, 5)
 it = Graph.dfs_iterative(graph, 5)
 print(rec)
 print(it, "(expected to be different)")
+assert rec == [5, 3, 2, 4, 8, 7]
+assert it == [5, 7, 8, 3, 4, 2]
 
 # ------------------------------------------------------------------------------------------------------------------
 
@@ -203,21 +207,21 @@ rec = Tree.in_order_recursive(root, [])
 it = Tree.in_order_iterative(root)
 print(rec)
 print(it)
-assert rec == it
+assert rec == it == [4, 2, 5, 1, 3]
 
 print("\npre-order recursive/iterative\n")
 rec = Tree.pre_order_recursive(root, [])
 it = Tree.pre_order_iterative(root)
 print(rec)
 print(it)
-assert rec == it
+assert rec == it == [1, 2, 4, 5, 3]
 
 print("\npost-order recursive/iterative\n")
 rec = Tree.post_order_recursive(root, [])
 it = Tree.post_order_iterative(root)
 print(rec)
 print(it)
-assert rec == it
+assert rec == it == [4, 5, 2, 3, 1]
 
 # ------------------------------------------------------------------------------------------------------------------
 
@@ -234,11 +238,11 @@ rec = Tree.in_order_recursive(bst, [])
 it = Tree.in_order_iterative(bst)
 print(rec)
 print(it)
-assert rec == it
+assert rec == it == [1, 2, 3]
 
 print("\nreverse order (descending): recursive/iterative\n")
 rec = Tree.reverse_order_recursive(bst, [])
 it = Tree.reverse_order_iterative(bst)
 print(rec)
 print(it)
-assert rec == it
+assert rec == it == [3, 2, 1]
