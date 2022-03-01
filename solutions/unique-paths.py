@@ -8,18 +8,21 @@ can take to reach the bottom-right corner.
 """
 from functools import cache
 
+
 class Solution:
     @staticmethod
     def uniquePaths(m, n):
         @cache
         def dfs(i, j):
-            if i >= m or j >= n: return 0
-            if i == m-1 and j == n-1: return 1
+            if i >= m or j >= n:
+                return 0
+            if i == m-1 and j == n-1:
+                return 1
             return dfs(i+1, j) + dfs(i, j+1)
         return dfs(0, 0)
 
 
 # test code
-assert Solution.uniquePaths(3,7) == 28
-assert Solution.uniquePaths(3,2) == 3
+assert Solution.uniquePaths(3, 7) == 28
+assert Solution.uniquePaths(3, 2) == 3
 

@@ -19,6 +19,7 @@ class Template:
         def extend_solution(position):
             """
             recursively search each permutation, pruning remaining calls if condition is not met
+            O(S(n)) time where S is test_solution (pruning) complexity & n is size, O(n) space
             """
             for value in values:
                 solution[position] = value
@@ -50,4 +51,4 @@ class Template:
 
 
 # test code
-print(''.join(str(v) for v in Template.solve("1234", Template.no_adjacencies, 10)))
+print(''.join(str(v) for v in Template.solve("123", Template.no_adjacencies, 10)))
