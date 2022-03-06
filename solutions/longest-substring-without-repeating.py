@@ -3,14 +3,11 @@ Given a string s, find the length of the longest substring without repeating cha
 """
 
 
-class Solution(object):
+class Solution:
     @staticmethod
     def lengthOfLongestSubstring(s):
         """
-        :type s: str
-        :rtype: int
-
-        Solution: Record first/last index of non-repeating chars
+        Solution: Record encountered chars in dict, first/last index of non-repeating chars
         """
         encountered = {}
         substring = []

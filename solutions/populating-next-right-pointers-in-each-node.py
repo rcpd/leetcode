@@ -5,11 +5,10 @@ If there is no next right node, the next pointer should be set to NULL.
 
 Initially, all next pointers are set to NULL.
 """
-from typing import Optional
 
 
 class Node:
-    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
+    def __init__(self, val=0, left=None, right=None, next=None):
         self.val = val
         self.left = left
         self.right = right
@@ -18,7 +17,7 @@ class Node:
 
 class Solution:
     @staticmethod
-    def connect(root: 'Optional[Node]') -> 'Optional[Node]':
+    def connect(root):
         if not root:
             return None
 
@@ -83,7 +82,8 @@ class Tests:
 
 
 # test code
-e1 = Tests.create_tree_from_flat_list([1,2,3,4,5,6,7])  # output = [1,#,2,3,#,4,5,6,7,#]
+e1 = Tests.create_tree_from_flat_list([1, 2, 3, 4, 5, 6, 7])  # output = [1, #, 2, 3, #, 4, 5, 6, 7, #]
 e2 = Tests.create_tree_from_flat_list([])  # output = []
 
 Solution.connect(e1)
+Solution.connect(e2)

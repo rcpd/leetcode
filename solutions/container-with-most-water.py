@@ -6,13 +6,9 @@ Return the maximum amount of water a container can store.
 """
 
 
-class Solution(object):
+class Solution:
     @staticmethod
     def maxArea(height):
-        """
-        :type height: List[int]
-        :rtype: int
-        """
         # left/right index
         i = 0
         j = len(height) - 1

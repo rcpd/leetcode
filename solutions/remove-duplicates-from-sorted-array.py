@@ -14,13 +14,9 @@ extra memory.
 """
 
 
-class Solution(object):
+class Solution:
     @staticmethod
     def removeDuplicates(nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
         max_num = -101
         i = 0
         for num in nums:

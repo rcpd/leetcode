@@ -26,14 +26,9 @@ Note:
 """
 
 
-class Solution(object):
+class Solution:
     @staticmethod
     def myAtoi(s):
-        """
-        :type s: str
-        :rtype: int
-        """
-
         sign = 1
         int_str = []
         digit = False

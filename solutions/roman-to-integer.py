@@ -28,18 +28,14 @@ C can be placed before D (500) and M (1000) to make 400 and 900.
 
 Given a roman numeral, convert it to an integer.
 """
+from collections import deque
 
 
-class Solution(object):
+class Solution:
     @staticmethod
     def romanToInt(s):
-        """
-        :type s: str
-        :rtype: int
-        """
-
         num_dict = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
-        numerals = list(s)  # string into list TODO: faster to iterate directly and not pop
+        numerals = deque(s)
         num = 0
         i = 0
 
@@ -49,21 +45,21 @@ class Solution(object):
                 if numerals[0] == "I":
                     if numerals[1] in "VX":
                         num -= 1
-                        numerals.pop(0)
+                        numerals.popleft()
 
                 elif numerals[0] == "X":
                     if numerals[1] in "CL":
                         num -= 10
-                        numerals.pop(0)
+                        numerals.popleft()
 
                 elif numerals[0] == "C":
                     if numerals[1] in "DM":
                         num -= 100
-                        numerals.pop(0)
+                        numerals.popleft()
 
             # the rest
             num += num_dict[numerals[0]]
-            numerals.pop(0)
+            numerals.popleft()
             i += 1
 
         return num

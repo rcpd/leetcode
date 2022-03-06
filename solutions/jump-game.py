@@ -6,6 +6,7 @@ Return true if you can reach the last index, or false otherwise.
 """
 from typing import List
 
+
 class Solution:
     @staticmethod
     def canJump(nums: List[int]) -> bool:
@@ -36,9 +37,9 @@ class Solution:
 
 
 # test code
-assert Solution.canJump([2,3,1,1,4])
-assert not Solution.canJump([3,2,1,0,4])
+assert Solution.canJump([2, 3, 1, 1, 4])
+assert not Solution.canJump([3, 2, 1, 0, 4])
 assert Solution.canJump([0])
-assert not Solution.canJump([0,1])
-assert Solution.canJump([1,1,1,0])
+assert not Solution.canJump([0, 1])
+assert Solution.canJump([1, 1, 1, 0])
 

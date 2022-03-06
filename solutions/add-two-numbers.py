@@ -6,20 +6,16 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 """
 
 
-class ListNode(object):
+class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
 
-class Solution(object):
+class Solution:
     @staticmethod
     def addTwoNumbers(l1, l2):
         """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
-
         Solution: treat the nodes like long form addition O(n)
         """
         root = node = ListNode(0)  # dummy node
@@ -73,9 +69,9 @@ if __name__ == '__main__':
     e3_l2_1 = ListNode(val=9, next=e3_l2_2)
     e3_l2_0 = ListNode(val=9, next=e3_l2_1)
 
-    x = Solution.addTwoNumbers(e1_l1_0, e1_l2_0)
-    print("Solution: [7,0,8]\n")
-    y = Solution.addTwoNumbers(e2_l1_0, e2_l2_0)
+    assert Solution.addTwoNumbers(e1_l1_0, e1_l2_0).next.next.val == 8
+    print("Solution: [7, 0, 8]\n")
+    assert Solution.addTwoNumbers(e2_l1_0, e2_l2_0).val == 0
     print("Solution: [0]\n")
-    z = Solution.addTwoNumbers(e3_l1_0, e3_l2_0)
-    print("Solution: [8,9,9,9,0,0,0,1] \n")
+    assert Solution.addTwoNumbers(e3_l1_0, e3_l2_0).next.next.next.next.next.next.next.val == 1
+    print("Solution: [8, 9, 9, 9, 0, 0, 0, 1] \n")

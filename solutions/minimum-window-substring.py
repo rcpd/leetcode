@@ -50,4 +50,4 @@ class Solution:
 
 
 # test code
-print("result: %s" % Solution.minWindow("ADOBECODEBANC", "ABC"))
+assert Solution.minWindow("ADOBECODEBANC", "ABC") == "BANC"
