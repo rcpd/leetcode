@@ -17,7 +17,7 @@ class Solution:
         # str > int
         x = int("".join(x_list)) * sign
 
-        # contrain bounds to signed i32 min/max
+        # constrain bounds to signed i32 min/max
         if (x < (-2 ** 31)) or (x > ((2 ** 31) - 1)):
             return 0
         else:
