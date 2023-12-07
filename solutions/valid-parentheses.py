@@ -20,13 +20,13 @@ class Solution:
                 stack.append(q.popleft())
             else:
                 if stack:
-                    if q[0] == ")" and stack and stack[-1] == "(":
+                    if q[0] == ")" and stack[-1] == "(":
                         stack.pop()
                         q.popleft()
-                    elif q[0] == "]" and stack and stack[-1] == "[":
+                    elif q[0] == "]" and stack[-1] == "[":
                         stack.pop()
                         q.popleft()
-                    elif q[0] == "}" and stack and stack[-1] == "{":
+                    elif q[0] == "}" and stack[-1] == "{":
                         stack.pop()
                         q.popleft()
                     else:
@@ -40,8 +40,15 @@ class Solution:
             return True
 
 
-# test code
-assert Solution.isValid("()")
-assert Solution.isValid("()[]{}")
-assert not Solution.isValid("([")
-assert not Solution.isValid("(){}}{")
+if __name__ == "__main__":
+    # test code
+    assert Solution.isValid("()")
+    assert Solution.isValid("()[]{}")
+    assert not Solution.isValid("([")
+    assert not Solution.isValid("(){}}{")
+
+    # edge cases: nested brackets
+    assert Solution.isValid("([[({})]])")
+    assert Solution.isValid("[{}([])]")
+    assert not Solution.isValid("{[]]}")
+    assert not Solution.isValid("{()]")
