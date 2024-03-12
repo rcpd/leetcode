@@ -75,7 +75,7 @@ class Solution:
         else:
             return 0
 
-        # contrain bounds to signed i32 min/max
+        # constrain bounds to signed i32 min/max
         if x < (-2 ** 31):
             return -2 ** 31
         elif x > (2 ** 31 - 1):
