@@ -14,7 +14,7 @@ class TreeNode:
 
 class Solution:
     @staticmethod
-    def inorderTraversal(root: Optional[TreeNode]) -> List[int]:
+    def inorder_traversal_recursive(root: Optional[TreeNode]) -> List[int]:
         # recursively walk the nodes
         res = []  # all recursive calls act on shared list
         Solution.helper(root, res)
@@ -28,9 +28,8 @@ class Solution:
             res.append(node.val)
             Solution.helper(node.right, res)
 
-    '''
-    # iteratively       
-    def inorderTraversal(self, root):
+    @staticmethod
+    def inorder_traversal_iterative(root):
         res, stack = [], []
         while True:
             while root:
@@ -41,7 +40,6 @@ class Solution:
             node = stack.pop()
             res.append(node.val)
             root = node.right
-    '''
 
 
 # test code
@@ -52,6 +50,10 @@ n1_1 = TreeNode(val=1, left=None, right=n1_2)
 n2 = None
 n3 = TreeNode(val=1, left=None, right=None)
 
-assert Solution.inorderTraversal(n1_1) == [1, 3, 2]
-assert Solution.inorderTraversal(n2) == []
-assert Solution.inorderTraversal(n3) == [1]
+assert Solution.inorder_traversal_recursive(n1_1) == [1, 3, 2]
+assert Solution.inorder_traversal_recursive(n2) == []
+assert Solution.inorder_traversal_recursive(n3) == [1]
+
+assert Solution.inorder_traversal_iterative(n1_1) == [1, 3, 2]
+assert Solution.inorder_traversal_iterative(n2) == []
+assert Solution.inorder_traversal_iterative(n3) == [1]

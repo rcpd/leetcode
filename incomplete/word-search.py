@@ -64,7 +64,6 @@ class Solution:
                     # if link found, allow outer loop to advance to next char
                     break
 
-
         if len(visited) > k:
             print(True)
             return True
@@ -72,7 +71,8 @@ class Solution:
             print(False)
             return False
 
+
 # test code
-# assert Solution.exist(board=[["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word="ABCCED")
-assert Solution.exist(board=[["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word="SEE")
-# assert not Solution.exist(board=[["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word="ABCB")
+# assert Solution.exist(board=[["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], word="ABCCED")
+assert Solution.exist(board=[["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], word="SEE")
+# assert not Solution.exist(board=[["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], word="ABCB")

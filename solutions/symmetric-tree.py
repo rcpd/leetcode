@@ -1,8 +1,6 @@
 """
 Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
 """
-from typing import Optional
-# Definition for a binary tree node.
 
 
 class TreeNode:

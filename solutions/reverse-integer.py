@@ -4,12 +4,8 @@ If reversing x causes the value to go outside the signed 32-bit integer range [-
 """
 
 
-class Solution(object):
+class Solution:
     def reverse(self, x):
-        """
-        :type x: int
-        :rtype: int
-        """
         # abs to remove sign, reverse the string
         x_list = str(abs(x))[::-1]
 

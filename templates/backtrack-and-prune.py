@@ -51,4 +51,4 @@ class Template:
 
 
 # test code
-print(''.join(str(v) for v in Template.solve("123", Template.no_adjacencies, 10)))
+assert(''.join(str(v) for v in Template.solve("123", Template.no_adjacencies, 10))) == '1213123132'

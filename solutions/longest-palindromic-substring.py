@@ -3,13 +3,10 @@ Given a string s, return the longest palindromic substring in s.
 """
 
 
-class Solution(object):
+class Solution:
     @staticmethod
     def longestPalindrome(s):
         """
-        :type s: str
-        :rtype: str
-
         Solution: starting at left/right expand outwards to find the biggest palindrome using two interleaved
             search patterns to cover odd or even numbered palindromes.
         Edge cases: single char
@@ -23,12 +20,6 @@ class Solution(object):
 
     @staticmethod
     def palindromeAt(s, left, right):
-        """
-        :type s: str
-        :type left: int
-        :type right: int
-        :rtype: str
-        """
         # while in bounds and matching
         while left >= 0 and right < len(s) and s[left] == s[right]:
             left -= 1

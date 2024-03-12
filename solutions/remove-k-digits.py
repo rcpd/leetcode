@@ -4,14 +4,10 @@ return the smallest possible integer after removing k digits from num.
 """
 
 
-class Solution(object):
+class Solution:
     @staticmethod
     def removeKdigits(num, k):
         """
-        :type num: str
-        :type k: int
-        :rtype: str
-
         Solution: pop the largest numbers from the front while building new number in a stack O(n)
         """
         stack = []

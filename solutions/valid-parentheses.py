@@ -6,34 +6,29 @@ An input string is valid if:
 Open brackets must be closed by the same type of brackets.
 Open brackets must be closed in the correct order.
 """
+from collections import deque
 
 
-class Solution(object):
+class Solution:
     @staticmethod
     def isValid(s):
-        """
-        :type s: str
-        :rtype: bool
-        """
         stack = []
-        s = list(s)
+        q = deque(s)
 
-        while s:
-            # TODO: sort?
-            if s[0] in "([{":
-                stack.append(s.pop(0))
+        while q:
+            if q[0] in "([{":
+                stack.append(q.popleft())
             else:
                 if stack:
-                    # TODO: dict?
-                    if s[0] == ")" and stack and stack[-1] == "(":
+                    if q[0] == ")" and stack and stack[-1] == "(":
                         stack.pop()
-                        s.pop(0)
-                    elif s[0] == "]" and stack and stack[-1] == "[":
+                        q.popleft()
+                    elif q[0] == "]" and stack and stack[-1] == "[":
                         stack.pop()
-                        s.pop(0)
-                    elif s[0] == "}" and stack and stack[-1] == "{":
+                        q.popleft()
+                    elif q[0] == "}" and stack and stack[-1] == "{":
                         stack.pop()
-                        s.pop(0)
+                        q.popleft()
                     else:
                         return False
                 else:

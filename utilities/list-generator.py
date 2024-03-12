@@ -3,7 +3,7 @@ Copy-pasta for leetcode style linked list generation
 """
 
 
-class ListNode(object):
+class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next

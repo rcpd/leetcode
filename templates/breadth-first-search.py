@@ -86,15 +86,17 @@ class Tree:
 
     @staticmethod
     def bfs_zigag(root):
+        """
+        zigzag traversal = similar to BFS except reverse left to right / right to left on depth change
+        """
         if not root:
             return []
         queue = deque([root])
         res = []
         even_level = False
         while queue:
-            n = len(queue)
             level = []
-            for _ in range(n):
+            for _ in range(len(queue)):
                 node = queue.popleft()
                 level.append(node.val)
                 if node.left:
