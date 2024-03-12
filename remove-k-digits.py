@@ -12,7 +12,7 @@ class Solution(object):
         :type k: int
         :rtype: str
 
-        Solution: pop the largest numbers from the front while building new number in a stack
+        Solution: pop the largest numbers from the front while building new number in a stack O(n)
         """
         stack = []
 

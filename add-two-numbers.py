@@ -20,7 +20,7 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
 
-        Solution: treat the nodes like long form addition
+        Solution: treat the nodes like long form addition O(n)
         """
         root = node = ListNode(0)  # dummy node
         carry = 0
