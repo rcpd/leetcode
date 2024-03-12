@@ -5,6 +5,7 @@ You must write an algorithm with O(log n) runtime complexity.
 """
 from typing import List
 
+
 class Solution:
     @staticmethod
     def searchRange(nums: List[int], target: int) -> List[int]:
@@ -16,7 +17,7 @@ class Solution:
 
         low = Solution.recurse(nums, target, 0, mid, "min", -1, -1)
         high = Solution.recurse(nums, target, mid+1, len(nums)-1, "max", -1, -1)
-
+        return [low, high]
 
     @staticmethod
     def recurse(nums, target, low, high, min_in, max_in, search):
@@ -37,8 +38,9 @@ class Solution:
                 else:
                     return max(-1, max_in)
 
+
 # test code
-assert Solution.searchRange(nums=[5,7,7,8,8,10], target=8) == [3,4]
-assert Solution.searchRange(nums=[5,7,7,8,8,10], target=6) == [-1,-1]
-assert Solution.searchRange(nums=[], target=0) == [-1,-1]
+assert Solution.searchRange(nums=[5, 7, 7, 8, 8, 10], target=8) == [3, 4]
+assert Solution.searchRange(nums=[5, 7, 7, 8, 8, 10], target=6) == [-1, -1]
+assert Solution.searchRange(nums=[], target=0) == [-1, -1]
 
